@@ -11,12 +11,12 @@ auth --enableshadow --passalgo=sha512
 repo --name="EPEL" --baseurl=http://dl.fedoraproject.org/pub/epel/7/x86_64
 
 
-
 # Accept Eula
 eula --agreed
 
 # Use network installation
-url --url="http://mirrors.isu.net.sa/pub/centos/7/os/x86_64/"
+#url --url="http://mirrors.isu.net.sa/pub/centos/7/os/x86_64/"
+url --url="http://ftp.heanet.ie/pub/centos/${RELEASE}/os/x86_64/"
 
 
 # Run the Setup Agent on first boot
@@ -36,9 +36,7 @@ lang en_US.UTF-8
 # network --onboot=yes --device=eth0 --bootproto=static --ip=10.42.0.20 --netmask=255.255.255.0 --gateway=10.42.0.1 --nameserver=155.247.225.230 --noipv6
 
 # for dhcp
-network  --bootproto=dhcp --device=enp0s3 --noipv6 --activate
-network  --hostname=centos7
-
+network --hostname=centos7 --bootproto=dhcp --device=enp0s3 --noipv6 --activate
 
 
 # Root password (letmein)
@@ -63,7 +61,7 @@ clearpart --all --drives=sda
 selinux --disabled
 firewall --enabled --service=ssh
 
-\%packages
+%packages
 @base
 @core
 vim
@@ -71,6 +69,6 @@ git
 
 
 
-\%end
+%end
 
 reboot

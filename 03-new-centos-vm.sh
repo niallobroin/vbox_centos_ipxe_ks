@@ -39,7 +39,7 @@ ${VBOXMANAGE} modifyvm "${VM}" --nic1 nat
 ${VBOXMANAGE} modifyvm ${VM} --macaddress1 00000000C700 
 #${VBOXMANAGE} modifyvm "${VM}" --macaddress1 00000000${TYPE}${N} 
 
-${VBOXMANAGE} modifyvm "${VM}" --nic2 hostonly --hostonlyadapter2 vboxnet0
+#${VBOXMANAGE} modifyvm "${VM}" --nic2 hostonly --hostonlyadapter2 vboxnet0
 
 
 

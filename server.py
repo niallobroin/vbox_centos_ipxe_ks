@@ -15,7 +15,6 @@ HOSTURL = "http://%s:4443" % (intf_ip)
 
 BASEURL = "http://127.0.0.1:4443"
 
-GUESTIP = '192.168.56.102'
 
 @route('/images/<os>/<release>/x86_64/<filename>')
 def index(os, release, filename):

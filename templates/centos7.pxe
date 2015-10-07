@@ -1,7 +1,8 @@
 #!ipxe
 
+set base-url http://ftp.heanet.ie/pub/centos/7/os/x86_64/
 
-kernel {{base_url}}/images/centos/7/x86_64/vmlinuz ks={{host_url}}/kickstart/${net0/mac}/ ip=dhcp xdriver=vesa nomodeset disk_size=100000
-initrd {{base_url}}/images/centos/7/x86_64/initrd.img 
+kernel ${base-url}/images/centos/7/x86_64/vmlinuz ks={{host_url}}/kickstart/${net0/mac}/ ip=dhcp xdriver=vesa nomodeset disk_size=100000
+initrd ${base-url}/images/centos/7/x86_64/initrd.img 
 boot
 

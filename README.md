@@ -12,6 +12,7 @@ Mainly lifted from here
 -----------------------
  * https://sites.google.com/site/chrismacdermaid/odds-and-ends/kickstart-virtualbox
  * http://marclop.svbtle.com/creating-an-automated-centos-7-install-via-kickstart-file
+ * with help from Dmitry Makarov https://github.com/vensder
 
 
 
