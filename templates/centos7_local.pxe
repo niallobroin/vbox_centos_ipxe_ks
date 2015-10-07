@@ -1,0 +1,7 @@
+#!ipxe
+
+kernel {{host_url}}/images/centos/7/x86_64/vmlinuz ks={{host_url}}/kickstart/${net0/mac}/ ip=dhcp ksdevice=eth0 ramdisk_size=10000 ipv6.disable=1 biosdevnames=0 net.ifnames=0 unsupported_hardware text
+
+initrd {{host_url}}/images/centos/7/x86_64/initrd.img 
+
+boot

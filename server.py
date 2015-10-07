@@ -25,33 +25,35 @@ def index(os, release, filename):
 
 MAP = {
 #       'xx:xx': (pxe, ks/cloud-config') 
-#        'c7': ('centos7.pxe', 'centos7_minimal.ks'),
-        'c7': ('centos7_minimal.pxe', 'centos7_minimal.ks'),
+        'c6': ('centos7.pxe', 'centos7_minimal.ks'),
+        'c7': ('centos7_local.pxe', 'centos7_minimal.ks'),
         }
 
 
+@route('/kickstart/<mac>/<id>')
+def index(mac, id):
 
-@route('/<typ>/<mac>/')
-def index(typ, mac):
-    if typ not in ['ipxe', 'kickstart']:
-        raise Exception
+    tplname = MAP[mac[-5:-3]][1]
+    
+    data = {'host_url': HOSTURL, 'base_url': BASEURL}
+    
+    tpl = file('templates/' + tplname).read()
 
-    if typ == 'ipxe':
-        tplname = MAP[mac[-5:-3]][0]
-        data = {'host_url': HOSTURL, 'base_url': BASEURL}
-
-    elif typ == 'kickstart':
-        tplname = MAP[mac[-5:-3]][1]
-        data = {'host_url': HOSTURL, 'base_url': BASEURL}
-
-    else:
-        raise Exception
+    print "Recieved kickstart and mac %s  Serving %s" % (mac, tplname)
+    return template(tpl, **data)
 
 
-    print "Recieved %s and mac %s  Serving %s" % (typ, mac, tplname)
+
+@route('/ipxe/<mac>/')
+def index(mac):
+
+    tplname = MAP[mac[-5:-3]][0]
+
+    data = {'host_url': HOSTURL, 'base_url': BASEURL}
 
     tpl = file('templates/' + tplname).read()
 
+    print "Recieved ipxe and mac %s  Serving %s" % (mac, tplname)
     return template(tpl, **data)
 
 

@@ -1,6 +1,7 @@
 #!ipxe
 
 
-kernel {{base_url}}/images/centos/7/x86_64/vmlinuz
-initrd {{base_url}}/images/centos/7/x86_64/initrd.img ip=dhcp ks={{host_url}}/kickstart/${net0/mac}/ xdriver=vesa nomodeset disk_size=100000
+kernel {{base_url}}/images/centos/7/x86_64/vmlinuz ks={{host_url}}/kickstart/${net0/mac}/ ip=dhcp xdriver=vesa nomodeset disk_size=100000
+initrd {{base_url}}/images/centos/7/x86_64/initrd.img 
 boot
+
