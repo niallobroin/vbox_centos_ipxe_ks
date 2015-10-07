@@ -28,14 +28,19 @@ ${VBOXMANAGE} createhd --filename "${VBOXBASE}/${VM}/${VM}.vdi" --size 8192
 ${VBOXMANAGE} storagectl "${VM}" --name "SATA Controller" --add sata --controller IntelAHCI
 ${VBOXMANAGE} storageattach "${VM}" --storagectl "SATA Controller" --port 0 --device 0 --type hdd --medium "${VBOXBASE}/${VM}/${VM}.vdi"
 ${VBOXMANAGE} modifyvm "${VM}" --memory 768
+${VBOXMANAGE} modifyvm "${VM}" --vram 16
 
 
 #${VBOXMANAGE} modifyvm "${VM}" --boot1 dvd --boot2 disk --boot3 net --boot4 none
-#${VBOXMANAGE} modifyvm ${VM} --nattftpfile1 "pxelinux.0"
 
 
-
+${VBOXMANAGE} modifyvm "${VM}" --nic1 nat
+#    ${VBOXMANAGE} modifyvm "${VM}" --nic1 bridged --bridgeadapter1 eth0
 ${VBOXMANAGE} modifyvm ${VM} --macaddress1 00000000C700 
+#${VBOXMANAGE} modifyvm "${VM}" --macaddress1 00000000${TYPE}${N} 
+
+${VBOXMANAGE} modifyvm "${VM}" --nic2 hostonly --hostonlyadapter2 vboxnet0
+
 
 
 # Create IDE controller and attach DVD
