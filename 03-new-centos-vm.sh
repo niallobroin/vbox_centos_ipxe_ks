@@ -27,7 +27,7 @@ ${VBOXMANAGE} createvm --name "${VM}" --ostype "Linux_64" --register
 ${VBOXMANAGE} createhd --filename "${VBOXBASE}/${VM}/${VM}.vdi" --size 8192
 ${VBOXMANAGE} storagectl "${VM}" --name "SATA Controller" --add sata --controller IntelAHCI
 ${VBOXMANAGE} storageattach "${VM}" --storagectl "SATA Controller" --port 0 --device 0 --type hdd --medium "${VBOXBASE}/${VM}/${VM}.vdi"
-${VBOXMANAGE} modifyvm "${VM}" --memory 768
+${VBOXMANAGE} modifyvm "${VM}" --memory 2048
 ${VBOXMANAGE} modifyvm "${VM}" --vram 16
 
 

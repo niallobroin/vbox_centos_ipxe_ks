@@ -16,7 +16,7 @@ eula --agreed
 
 # Use network installation
 #url --url="http://mirrors.isu.net.sa/pub/centos/7/os/x86_64/"
-url --url="http://ftp.heanet.ie/pub/centos/${RELEASE}/os/x86_64/"
+url --url="http://ftp.heanet.ie/pub/centos/7/os/x86_64/"
 
 
 # Run the Setup Agent on first boot
@@ -61,14 +61,13 @@ clearpart --all --drives=sda
 selinux --disabled
 firewall --enabled --service=ssh
 
-%packages
-@base
+\%packages
 @core
 vim
 git
 
 
 
-%end
+\%end
 
 reboot
